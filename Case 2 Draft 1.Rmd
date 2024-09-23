@@ -11,16 +11,25 @@ date: "2024-09-23"
 output: pdf_document
 ---
 
-## Introduction
+## Introduction (Mint)
 
 
-## Methodology
+## Methodology (Thiwanka)
 
 
-## Results
+## Results (shared)
+
+# Neha - strategy 1 
+
+# Thiwanka - strategy 2 
+
+# Mint - strategy 3
 
 
-## Recommendations
+## Conclusions / Discuss (shared)
+
+
+## Recommendations (Neha)
 
 
 ## Appendices
