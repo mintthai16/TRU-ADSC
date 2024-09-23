@@ -1,0 +1,26 @@
+---
+title: "ADSC - Case 2"
+author: "Mint Thai - T00762325
+
+
+Neha Malhan T00757554
+
+
+Thiwanka Abeyweera T00754871"
+date: "2024-09-23"
+output: pdf_document
+---
+
+## Introduction
+
+
+## Methodology
+
+
+## Results
+
+
+## Recommendations
+
+
+## Appendices
