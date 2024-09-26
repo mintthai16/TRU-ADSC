@@ -1,0 +1,180 @@
+---
+title: "ADSC - Case 2"
+author: "Mint Thai - T00762325
+
+
+Neha Malhan T00757554
+
+
+Thiwanka Abeyweera T00754871"
+date: "2024-09-23"
+output: pdf_document
+---
+
+## Introduction (Mint)
+
+An amateur investor seeks professional guidance on three proposed investment strategies for a \$100 investment. Each strategy presents a variety of potential outcomes, ranging from a loss of \$100 to a gain of up to \$5000, accompanied by their corresponding probabilities. This report will assess each strategy by calculating the expected value to determine potential profitability and analyze the associated risks through variance. The analyses and findings will be detailed in the methodology, results, and discussion sections, concluding with a recommendation for the investor's \$100 investment.
+
+## Methodology (Thiwanka)
+
+expected value
+
+variance
+
+this is a discrete random variable case
+
+## Results (shared)
+
+```{r, echo=FALSE}
+
+# Strategy1
+strategy1 <- data.frame(
+  Outcome = c(-100, -50, 0, 10, 100, 200, 300, 400, 500),
+  Probability = c(0.25, 0.3, 0.2, 0.1, 0.07, 0.04, 0.02, 0.01, 0.01)
+)
+
+# Strategy2
+strategy2 <- data.frame(
+  Outcome = c(-100, -75, -50, -25, 100, 200, 300, 400, 500, 1000),
+  Probability = c(0.01, 0.05, 0.1, 0.25, 0.2, 0.2, 0.1, 0.05, 0.03, 0.01)
+)
+
+# Strategy3
+strategy3 <- data.frame(
+  Outcome = c(-100, -50, 0, 100, 1000, 2000, 3000, 4000, 5000),
+  Probability = c(0.4, 0.3, 0.183, 0.1, 0.007, 0.004, 0.003, 0.002, 0.001)
+)
+
+# Calculate expected values for each strategy
+ev_strategy1 <- sum(strategy1$Outcome * strategy1$Probability)
+ev_strategy2 <- sum(strategy2$Outcome * strategy2$Probability)
+ev_strategy3 <- sum(strategy3$Outcome * strategy3$Probability)
+
+
+# Calculate variance for each strategy
+variance_strategy1 <- sum((strategy1$Outcome - ev_strategy1)^2 * strategy1$Probability)
+variance_strategy2 <- sum((strategy2$Outcome - ev_strategy2)^2 * strategy2$Probability)
+variance_strategy3 <- sum((strategy3$Outcome - ev_strategy3)^2 * strategy3$Probability)
+
+
+# Calculate cumulative probabilities for each strategy
+cumulative_strategy1 <- cumsum(strategy1$Probability)
+cumulative_strategy2 <- cumsum(strategy2$Probability)
+cumulative_strategy3 <- cumsum(strategy3$Probability)
+
+# Calculate cumulative probabilities (%) for each strategy
+cumulative_strategy1_per <- cumsum(strategy1$Probability)*100
+cumulative_strategy2_per <- cumsum(strategy2$Probability)*100
+cumulative_strategy3_per <- cumsum(strategy3$Probability)*100
+
+```
+
+# Neha - strategy 1
+
+# Thiwanka - strategy 2
+
+# Mint - strategy 3
+
+Figure X visualizes the outcomes and cumulative probabilities of Strategy 3 in a bar chart. Although this strategy offers a higher potential return of up to \$5000, it also comes with significant risks. The likelihood of incurring losses of $100 and $50 stands at 40% and 70%, respectively. The cumulative probabilities of breaking even is 88.3%, indicating that the chance of achieving any profit is less than 12%. Moreover, the chance of generating substantial profits between $1,000 and $5,000 is only 1.7%.
+
+```{r, echo = FALSE, fig.align='center', fig.cap="Strategy 3 Outcomes and Cumulative Probability", out.width='50%'}
+
+barplot(
+  height = cumulative_strategy3_per,
+  names.arg = strategy3$Outcome,
+  col = "lightblue",
+  ylab = "Cumulative Probability (%)",
+  xlab = "Outcome ($)"
+)
+```
+
+Based on the assessment and calculations, the expected value and variance for Strategy 3 are as indicated in Table X below:
+
+```{r, echo = FALSE, fig.align='center',fig.cap="Strategy 3 Assessment Result", out.width='50%'}
+
+strategy3_summary <- t(data.frame(
+  "Expected Value" = ev_strategy3, 
+  "Variance" = variance_strategy3))
+
+rownames(strategy3_summary) <- c("Expected Value", "Variance")
+
+
+knitr::kable(strategy3_summary, digits = 0, caption = "Strategy 3 Assessment Result")
+
+```
+
+The **expected value** for Strategy 3 is **-8**. This indicates that the investor can expect an average loss of \$8 per investment. The negative expected value implies a greater likelihood of incurring losses rather than achieving gains and suggests that this strategy may not be favourable for the investor seeking profit. Additionally, the highest variance of 112686 suggests that the outcomes can vary widely, leading to extreme gains or losses. This highlights a significant risk and uncertainty associated with this investment strategy.
+
+Given the negative expected value, high variance and greater cumulative probabilities leaning towards losses, Strategy 3 is a risky investment option for investors prioritizing financial stability and positive returns. This strategy may be better suited for investors with a high-risk tolerance who are willing to accept the possibility of losses in pursuit of higher returns.
+
+## Conclusions / Discuss (shared)
+
+```{r echo=FALSE}
+
+# Display Expected Value and Variance for all 3 strategies in a table
+
+results_all <- data.frame(
+  Strategy = c("Strategy 1", "Strategy 2", "Strategy 3"),
+  Expected_Value = c(ev_strategy1, ev_strategy2, ev_strategy3),
+  Variance = round(c(variance_strategy1, variance_strategy2, variance_strategy3)))
+
+results_all_flip <- t(results_all[, -1])
+
+knitr::kable(results_all_flip, col.names = c("Strategy 1", "Strategy 2", "Strategy 3"), digits = 0, caption = "Strategy Assessment Summary")
+
+```
+
+conclusion / discussion -- quickly sum everything up, write a brief comparison about the 3 strategies
+
+## Recommendations (Neha)
+
+## Appendices
+
+```{r}
+
+# Strategy1
+strategy1 <- data.frame(
+  Outcome = c(-100, -50, 0, 10, 100, 200, 300, 400, 500),
+  Probability = c(0.25, 0.3, 0.2, 0.1, 0.07, 0.04, 0.02, 0.01, 0.01)
+)
+
+# Strategy2
+strategy2 <- data.frame(
+  Outcome = c(-100, -75, -50, -25, 100, 200, 300, 400, 500, 1000),
+  Probability = c(0.01, 0.05, 0.1, 0.25, 0.2, 0.2, 0.1, 0.05, 0.03, 0.01)
+)
+
+# Strategy3
+strategy3 <- data.frame(
+  Outcome = c(-100, -50, 0, 100, 1000, 2000, 3000, 4000, 5000),
+  Probability = c(0.4, 0.3, 0.183, 0.1, 0.007, 0.004, 0.003, 0.002, 0.001)
+)
+
+# Calculate expected values for each strategy
+ev_strategy1 <- sum(strategy1$Outcome * strategy1$Probability)
+ev_strategy2 <- sum(strategy2$Outcome * strategy2$Probability)
+ev_strategy3 <- sum(strategy3$Outcome * strategy3$Probability)
+
+
+# Calculate variance for each strategy
+variance_strategy1 <- sum((strategy1$Outcome - ev_strategy1)^2 * strategy1$Probability)
+variance_strategy2 <- sum((strategy2$Outcome - ev_strategy2)^2 * strategy2$Probability)
+variance_strategy3 <- sum((strategy3$Outcome - ev_strategy3)^2 * strategy3$Probability)
+
+```
+
+```{r}
+
+# Display Expected Value and Variance for all 3 strategies in a table
+
+results_all <- data.frame(
+  Strategy = c("Strategy 1", "Strategy 2", "Strategy 3"),
+  Expected_Value = c(ev_strategy1, ev_strategy2, ev_strategy3),
+  Variance = round(c(variance_strategy1, variance_strategy2, variance_strategy3)))
+
+results_all_flip <- t(results_all[, -1])
+
+knitr::kable(results_all_flip, col.names = c("Strategy 1", "Strategy 2", "Strategy 3"), digits = 0, caption = "Strategy Assessment Summary")
+```
+
+team work division
