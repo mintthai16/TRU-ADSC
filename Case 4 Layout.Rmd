@@ -1,0 +1,36 @@
+---
+title: "ADSC Case 4 Report Layout"
+author: "Mint Thai - T00762325"
+date: "2024-10-03"
+output: pdf_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r, echo=FALSE}
+
+read.csv("NHL2.csv")
+
+```
+
+## Introduction
+
+
+## Methodology
+
+
+## Results
+
+
+## Conclusions
+
+
+## Recommendations
+
+
+## Appendix
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+
+```
